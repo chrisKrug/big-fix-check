@@ -1,11 +1,15 @@
 #!/bin/sh
+#
+# Bash script to check for version of BigFix client
+#
+#
 
 targetVersion="9.5.16.90"
 dateNow=$(date +"%Y%m%d")
 fileName=${dateNow}".log"
 echo $HOSTNAME
 if [ -n "$(uname -a | grep el7)" ]; then
-        OS_RELEASE_VERS="7"
+	OS_RELEASE_VERS="7"
 	if [[ -f "/var/opt/BESClient/besclient.config" ]]; then
 		#check version
 		VERSION="$(cat /var/opt/BESClient/besclient.config | grep LastClientVersion | cut -d"=" -f2 | xargs)"
