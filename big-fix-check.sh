@@ -29,49 +29,49 @@ check_bigfix_logs () {
 
 stop_bigfix_service () {
 	systemctl stop besclient
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	echo "Service stopped"
 }
 
 start_bigfix_service () {
 	systemctl start besclient
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	echo "Service started"
 }
 
 restart_bigfix_service () {
 	systemctl stop besclient
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	echo "Service restarted"
 }
 
 remove_bigfix_rpm () {
 	besAgent="$(rpm -qa | grep -i BESAgent)"
 	rpm -e ${besAgent}
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	echo "rpm removed"
 }
 
 remove_installed_bigfix_directories () {
 	rm -rf /etc/opt/BESClient
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	rm -rf /opt/BESClient
-	previousPid=$!
- 	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	rm -rf /tmp/BES
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	rm -rf /var/opt/BESClient
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	rm -rf /var/opt/BESCommon
-	previousPid=$!
-	wait $previousPid
+	_previous_pid=$!
+	wait $_previous_pid
 	echo "Installation removed"
 }
 
