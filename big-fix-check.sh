@@ -79,6 +79,9 @@ install_bigfix () {
 	bash /repos/ecmo/ecmo-linux.sh #subject to linux admin's script
 }
 
+check_hostname
+check_os_version
+
 if [[ $_uname_results == *"el7"* ]]; then
 	if [[ -f "/var/opt/BESClient/besclient.config" ]]; then
 		check_installed_bigfix_version
