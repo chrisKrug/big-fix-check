@@ -82,6 +82,9 @@ install_bigfix () {
 check_hostname
 check_os_version
 
+echo $_host
+echo $_uname_results
+
 if [[ $_uname_results == *"el7"* ]]; then
 	if [[ -f "/var/opt/BESClient/besclient.config" ]]; then
 		check_installed_bigfix_version
@@ -91,33 +94,33 @@ if [[ $_uname_results == *"el7"* ]]; then
 				check_bigfix_logs				
 				if [[ $_log_messages == *"GetURL failed"* ]]; then
 					echo "Connection problem detected"
-					stop_bigfix_service
-					remove_bigfix_rpm					
-					remove_installed_bigfix_directories
-					install_bigfix
-					echo "Check logs for connection status"				
+					#stop_bigfix_service
+					#remove_bigfix_rpm					
+					#remove_installed_bigfix_directories
+					#install_bigfix
+					#echo "Check logs for connection status"				
 				else
 					echo "No connection problem detected"
 				fi
 			else
 				echo "No logs for today's date"
-				stop_bigfix_service
-				remove_bigfix_rpm
-				remove_installed_bigfix_directories
-				install_bigfix
-				echo "Check logs for connection status"
+				#stop_bigfix_service
+				#remove_bigfix_rpm
+				#remove_installed_bigfix_directories
+				#install_bigfix
+				#echo "Check logs for connection status"
 			fi
 		else
 			echo "Old version. Installing new version"
-			stop_bigfix_service
-			remove_bigfix_rpm
-			remove_installed_bigfix_directories
-			install_bigfix
-			echo "Check logs for connection status"
+			#stop_bigfix_service
+			#remove_bigfix_rpm
+			#remove_installed_bigfix_directories
+			#install_bigfix
+			#echo "Check logs for connection status"
 		fi	
 	else
 		echo "client not installed"
-		install_bigfix
-		"Check logs for connection status"
+		#install_bigfix
+		#echo "Check logs for connection status"
 	fi
 fi
