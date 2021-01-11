@@ -24,7 +24,7 @@ check_installed_bigfix_version () {
 }
 
 check_bigfix_logs () {
-	_log_messages="$(tail -20 /var/opt/BESClient/__BESData/__Global/Logs/${fileName})"
+	_log_messages="$(tail -20 /var/opt/BESClient/__BESData/__Global/Logs/${_date_now_file_name})"
 }
 
 stop_bigfix_service () {
